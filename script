@@ -1,0 +1,16 @@
+#!/bin/bash
+
+echo "This is a bash script running Muscle!"
+
+infile='data/co1.fa'
+outfile='out.fa'
+startlength=$(cat $infile | wc -m)
+./muscle -in $infile -out $outfile -maxiters 4
+
+endlength=$(cat $outfile | wc -m)
+
+count=$(expr $endlength - $startlength)
+
+echo "Muscle added $count characters to the alignment."
+
+
